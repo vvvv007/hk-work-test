@@ -357,13 +357,26 @@
                 return annualPackage / 261;
             });
 
+            // 🔄 修改 1：更新实际工时计算逻辑 (扣除摸鱼，算上OT)
             const actualWorkHours = computed(() => {
                 const start = new Date(`2000-01-01T${form.startTime}`);
                 const end = new Date(`2000-01-01T${form.endTime}`);
                 let diff = (end - start) / 1000 / 60 / 60; 
                 if (diff < 0) diff += 24; 
+                
+                // 1. 基础时长 = (下班 - 上班) - 午休
                 let netWork = diff - form.lunchHour;
-                if (form.isLateOT) netWork = netWork * 1.1;
+                
+                // 2. 扣除摸鱼时长 (将分钟转为小时)
+                // 用户要求：显示的“实际工时”应该是剔除水分后的“干活时长”
+                netWork = netWork - (form.slackMinutes / 60);
+
+                // 3. 加上 OT 惩罚系数
+                if (form.isLateOT) {
+                    netWork = netWork * 1.1;
+                }
+                
+                // 兜底：防止算出负数
                 return Math.max(0.1, netWork);
             });
 
@@ -375,9 +388,18 @@
 
             const slackHours = computed(() => form.slackMinutes / 60);
 
+            // 🔄 修改 2：修正最终 R 值公式 (适配新的工时定义)
             const finalScore = computed(() => {
                 const numerator = dailyPay.value * Number(form.industry) * Number(form.migration) * Number(form.wfh) * Number(form.vibeScore);
-                const timeCost = actualWorkHours.value + commuteHours.value - (0.5 * slackHours.value);
+                
+                // 公式修正逻辑：
+                // 原公式分母项：[ 工时 + 通勤 - 0.5*摸鱼 ]
+                // 现在的 actualWorkHours = (工时 - 1.0*摸鱼)
+                // 所以这里我们需要：actualWorkHours + 通勤 + 0.5*摸鱼
+                // 数学推导：(工时 - 摸鱼) + 0.5*摸鱼 = 工时 - 0.5*摸鱼 (完美回归原公式)
+                
+                const timeCost = actualWorkHours.value + commuteHours.value + (0.5 * slackHours.value);
+                
                 const safeTimeCost = Math.max(1, timeCost); 
                 const denominator = form.age * safeTimeCost * Number(form.rentFactor) * Number(form.eduFactor);
 
