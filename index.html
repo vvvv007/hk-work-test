@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>香港打工体验报告 HK-R v5.1</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans HK', sans-serif; background-color: #f3f4f6; }
+        .gradient-bg { background: linear-gradient(180deg, #e0f2fe 0%, #ffffff 100%); }
+        .score-text { color: #1e3a8a; } 
+        /* 简单的淡入淡出动画 */
+        .fade-enter-active, .fade-leave-active { transition: opacity 0.3s ease; }
+        .fade-enter-from, .fade-leave-to { opacity: 0; }
+        /* 隐藏滚动条但保留功能 */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="pb-20 min-h-screen bg-slate-50">
+
+<div id="app" class="max-w-2xl mx-auto p-4">
+
+    <transition name="fade" mode="out-in">
+        <div v-if="showWelcome" key="welcome" class="flex flex-col items-center justify-center min-h-[90vh] py-6">
+            
+            <div class="mb-4 text-6xl">🇭🇰</div>
+            
+            <h1 class="text-4xl font-black text-blue-900 mb-2 text-center tracking-tight">
+                香港打工<br><span class="text-blue-600">体验</span>报告
+            </h1>
+            <p class="text-gray-500 text-xs mb-8 tracking-widest uppercase">HK Work Experience Report (v5.1)</p>
+
+            <div class="bg-white p-5 rounded-2xl shadow-xl w-full border border-gray-100 mb-6">
+                
+                <h3 class="font-bold text-gray-800 mb-3 text-sm flex items-center">
+                    <span class="bg-blue-100 text-blue-600 py-0.5 px-2 rounded text-xs mr-2">Core</span>
+                    终极性价比公式
+                </h3>
+                
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-200 overflow-x-auto no-scrollbar mb-6">
+                    <div class="min-w-[300px] flex items-center justify-center font-serif text-gray-700">
+                        <span class="font-bold text-xl mr-3 italic font-serif">R =</span>
+                        <div class="flex flex-col items-center text-[10px] md:text-xs leading-relaxed">
+                            <div class="border-b-2 border-gray-400 px-2 pb-1 mb-1 font-semibold text-blue-700 whitespace-nowrap">
+                                ①日薪 × ②行业 × ③润学 × ④WFH加成 × ⑤爽度
+                            </div>
+                            <div class="font-semibold text-red-700 whitespace-nowrap">
+                                ⑥年龄 × [ ⑦工时 + ⑧通勤痛苦 - (0.5×⑨蛇王时长) ] × ⑩房租痛感 × ⑪学历溢价
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="font-bold text-gray-800 mb-3 text-sm flex items-center">
+                    <span class="bg-purple-100 text-purple-600 py-0.5 px-2 rounded text-xs mr-2">Scale</span>
+                    R值评级标准
+                </h3>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-gray-100 p-3 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-lg">💀</span>
+                            <span class="text-xs font-black bg-black text-white px-1.5 rounded">R &lt; 3.3</span>
+                        </div>
+                        <div class="text-xs font-bold text-gray-700">地狱生存线</div>
+                        <div class="text-[9px] text-gray-500 mt-0.5">负资产打工，建议快逃</div>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg border border-gray-200">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-lg">😐</span>
+                            <span class="text-xs font-bold bg-gray-400 text-white px-1.5 rounded">3.3 - 6.0</span>
+                        </div>
+                        <div class="text-xs font-bold text-gray-600">标准港畜线</div>
+                        <div class="text-[9px] text-gray-500 mt-0.5">手停口停，无惊无险</div>
+                    </div>
+                    <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-lg">☕</span>
+                            <span class="text-xs font-bold bg-blue-500 text-white px-1.5 rounded">6.0 - 10.5</span>
+                        </div>
+                        <div class="text-xs font-bold text-blue-700">舒适中产线</div>
+                        <div class="text-[9px] text-blue-400 mt-0.5">生活有得拣，假期有得飞</div>
+                    </div>
+                    <div class="bg-purple-50 p-3 rounded-lg border border-purple-100">
+                        <div class="flex justify-between items-center mb-1">
+                            <span class="text-lg">🦄</span>
+                            <span class="text-xs font-bold bg-purple-600 text-white px-1.5 rounded">&gt; 10.5</span>
+                        </div>
+                        <div class="text-xs font-bold text-purple-700">神仙工</div>
+                        <div class="text-[9px] text-purple-400 mt-0.5">系统漏洞，绝对机密</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <button 
+                @click="startTest" 
+                class="w-full max-w-sm bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-8 rounded-xl text-xl shadow-lg transform transition hover:scale-105 active:scale-95 flex items-center justify-center">
+                <span>立即开始测评</span>
+                <span class="ml-2">🚀</span>
+            </button>
+            
+            <p class="mt-6 text-xs text-gray-400">Powered by HK-R Algorithm</p>
+        </div>
+
+        <div v-else key="calculator">
+            
+            <div class="flex items-center mb-6 pt-2">
+                <button @click="showWelcome = true" class="text-gray-400 hover:text-gray-600 text-sm flex items-center">
+                    <span class="mr-1">←</span> 返回首页
+                </button>
+            </div>
+
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-black text-blue-900 mb-2">数据录入</h1>
+                <p class="text-gray-500 text-sm">请输入你的真实职场参数</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 mb-8 space-y-6">
+                
+                <div class="border-b pb-4">
+                    <h2 class="text-xl font-bold text-blue-800 mb-4">💰 分子：收益与加成</h2>
+                    <div class="grid grid-cols-2 gap-4 mb-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">月薪 (HKD)</label>
+                            <input v-model.number="form.salary" type="number" class="w-full border rounded p-2 mt-1" placeholder="20000">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">年薪月数</label>
+                            <input v-model.number="form.months" type="number" class="w-full border rounded p-2 mt-1" placeholder="12">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">年度固定津贴 (Bonus/Allowance)</label>
+                        <input v-model.number="form.allowance" type="number" class="w-full border rounded p-2 mt-1" placeholder="0">
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">行业 (Industry Caste)</label>
+                        <select v-model="form.industry" class="w-full border rounded p-2 mt-1">
+                            <option value="1.3">Tier 0: 医生/AO/EO/公营机构 (1.3)</option>
+                            <option value="1.2">Tier 1: 投行/Hedge Fund/顶级律所 (1.2)</option>
+                            <option value="1.1">Tier 2: IT/MNC/银行中后台 (1.1)</option>
+                            <option value="1.0">Tier 3: 普通文职/教育/传媒 (1.0)</option>
+                            <option value="0.9">Tier 4: 餐饮/零售/劳动密集 (0.9)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">润学/跳板属性</label>
+                        <select v-model="form.migration" class="w-full border rounded p-2 mt-1">
+                            <option value="1.2">金跳板: 包Global Transfer (1.2)</option>
+                            <option value="1.1">镀金: 知名外企，履历认可高 (1.1)</option>
+                            <option value="1.0">本地: 纯港资/中资中小企 (1.0)</option>
+                            <option value="0.9">锁死: 有Bond或行业敏感 (0.9)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">WFH 自由度</label>
+                        <select v-model="form.wfh" class="w-full border rounded p-2 mt-1">
+                            <option value="1.3">天堂: Fully Remote / 数字游民 (1.3)</option>
+                            <option value="1.2">爽: 每周 3-4 天 (1.2)</option>
+                            <option value="1.1">恩赐: 每周 1-2 天 (1.1)</option>
+                            <option value="1.0">坐牢: Full Office (1.0)</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">环境与开心指数 (Vibe Check)</label>
+                        <select v-model="form.vibeScore" class="w-full border rounded p-2 mt-1">
+                            <option value="1.2">1.2 (极爽): 中环/ICC + 外企氛围</option>
+                            <option value="1.1">1.1 (舒适): 地段好 或 T8不用办公</option>
+                            <option value="1.0">1.0 (标准): 普通写字楼 / 无功无过</option>
+                            <option value="0.95">0.95 (略差): 旧工业区 或 港式家族管理</option>
+                            <option value="0.9">0.9 (压抑): 位置差 + 文化压抑 + T8要WFH</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-xl font-bold text-red-800 mb-4">💀 分母：成本与消耗</h2>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">年龄 (Age)</label>
+                        <input v-model.number="form.age" type="number" class="w-full border rounded p-2 mt-1">
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 mb-3">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">上班时间</label>
+                            <input v-model="form.startTime" type="time" class="w-full border rounded p-2 mt-1">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700">下班时间</label>
+                            <input v-model="form.endTime" type="time" class="w-full border rounded p-2 mt-1">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">午休时长 (小时)</label>
+                        <input v-model.number="form.lunchHour" type="number" step="0.5" class="w-full border rounded p-2 mt-1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="inline-flex items-center text-sm text-red-600">
+                            <input type="checkbox" v-model="form.isLateOT" class="mr-2"> 常态化无偿OT至21:00后 (时长x1.1)
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">单程门对门时间 (分钟)</label>
+                        <input v-model.number="form.commuteSingle" type="number" class="w-full border rounded p-2 mt-1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="inline-flex items-center text-sm text-red-600">
+                            <input type="checkbox" v-model="form.isCrossHarborPain" class="mr-2"> 过海/拥挤/无的士报销 (+0.5h痛感)
+                        </label>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">每日摸鱼总时长 (分钟)</label>
+                        <input v-model.number="form.slackMinutes" type="number" class="w-full border rounded p-2 mt-1">
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">房租痛感系数</label>
+                        <select v-model="form.rentFactor" class="w-full border rounded p-2 mt-1">
+                            <option value="1.0">1.0 (无痛): 住家/包住/自置</option>
+                            <option value="1.1">1.1 (舒适): 房租 < 20%</option>
+                            <option value="1.3">1.3 (紧凑): 房租 20%-35%</option>
+                            <option value="1.6">1.6 (窒息): 房租 > 35%</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="block text-sm font-medium text-gray-700">学历溢价 (Education Tax)</label>
+                        <select v-model="form.eduFactor" class="w-full border rounded p-2 mt-1">
+                            <option value="0.9">0.9: 副学士/HD</option>
+                            <option value="1.0">1.0: 普通本科/非名校海归</option>
+                            <option value="1.1">1.1: 港三/硕士</option>
+                            <option value="1.2">1.2: 全球Top 30</option>
+                            <option value="1.3">1.3: 博士 PhD</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button @click="generateImage" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg text-lg transition duration-300 shadow-md">
+                    📸 生成结果卡片 (保存图片)
+                </button>
+            </div>
+
+            <div class="flex justify-center">
+                <div id="result-card" class="relative w-[375px] h-[667px] bg-white overflow-hidden shadow-2xl" style="font-family: Arial, Helvetica, sans-serif;">
+                    
+                    <div class="absolute top-0 left-0 w-full h-2 bg-red-600 z-20"></div>
+                    <div class="absolute inset-0 h-full w-full gradient-bg opacity-30 z-0"></div>
+                    
+                    <div class="relative z-10 p-5 flex flex-col h-full justify-between">
+                        <div class="text-center mt-3">
+                            <h3 class="text-[10px] tracking-widest text-gray-500 uppercase font-bold" style="letter-spacing: 0.15em;">HK WORK EXPERIENCE REPORT</h3>
+                            <h1 class="text-3xl font-black text-blue-900 mt-1 tracking-tight" style="font-weight: 900;">香港打工体验报告</h1>
+                        </div>
+
+                        <div class="text-center mt-2 mb-8">
+                            <div class="text-gray-500 text-xs mb-1">您的性价比 R 值</div>
+                            <div class="text-[80px] font-black score-text leading-[0.9] tracking-tighter" style="font-weight: 900;">
+                                {{ finalScore }}
+                            </div>
+                        </div>
+
+                        <div class="text-center mb-4">
+                            <div class="text-2xl font-black tracking-wider" :class="textColor">
+                                「 {{ ratingTitle }} 」
+                            </div>
+                            <p class="text-gray-600 text-xs mt-2 px-2 italic font-medium">
+                                "{{ ratingQuote }}"
+                            </p>
+                        </div>
+
+                        <div class="bg-white/60 backdrop-blur-sm rounded-lg border border-gray-100 p-3 text-xs">
+                            <div class="flex justify-between border-b border-gray-200 pb-1 mb-1">
+                                <span class="text-gray-500">综合日薪</span>
+                                <span class="font-bold">HK$ {{ dailyPay.toFixed(0) }}</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1 mb-1">
+                                <span class="text-gray-500">实际工时</span>
+                                <span class="font-bold">{{ actualWorkHours.toFixed(1) }} hrs</span>
+                            </div>
+                            <div class="flex justify-between border-b border-gray-200 pb-1 mb-1">
+                                <span class="text-gray-500">通勤痛感</span>
+                                <span class="font-bold">{{ (commuteHours * form.commuteSingle * 2 / 60).toFixed(1) }} hrs</span> </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-500">房租/学历系数</span>
+                                <span class="font-bold">{{ form.rentFactor }} / {{ form.eduFactor }}</span>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 bg-blue-50 p-3 rounded-lg border-l-4 border-blue-600 flex-grow flex flex-col justify-center">
+                            <h4 class="font-bold text-blue-900 text-xs mb-2">💡 专家诊断报告</h4>
+                            <p class="text-[11px] text-blue-800 leading-relaxed text-justify opacity-90 mb-2">
+                                {{ ratingPortrait }}
+                            </p>
+                            <p class="text-[11px] text-blue-800 leading-relaxed text-justify opacity-90">
+                                {{ ratingAdvice }}
+                            </p>
+                        </div>
+
+                        <div class="flex items-end justify-between mt-3 pt-2 border-t border-gray-200">
+                            <div class="text-left pb-1">
+                                <div class="text-[10px] text-gray-500 font-bold">HK-R v5.1 Algorithm</div>
+                                <div class="text-[9px] text-gray-400">扫码测测你的工作性价比</div>
+                            </div>
+                            <div class="bg-white p-1 rounded shadow-sm">
+                                <img :src="qrImageUrl" class="w-14 h-14" alt="QR Code">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-4 text-gray-400 text-xs pb-10">
+                截图以上区域或点击按钮保存图片
+            </div>
+        </div>
+    </transition>
+
+</div>
+
+<script>
+    const { createApp, computed, reactive, ref } = Vue;
+
+    createApp({
+        setup() {
+            const showWelcome = ref(true);
+            const siteUrl = "https://www.google.com"; 
+
+            const form = reactive({
+                salary: 20000,
+                months: 12,
+                allowance: 0,
+                industry: "1.0",
+                migration: "1.0",
+                wfh: "1.0",
+                vibeScore: "1.0",
+                age: 25,
+                startTime: "09:00",
+                endTime: "18:00",
+                lunchHour: 1,
+                isLateOT: false,
+                commuteSingle: 45, 
+                isCrossHarborPain: false,
+                slackMinutes: 30,
+                rentFactor: "1.3",
+                eduFactor: "1.0"
+            });
+
+            const startTest = () => {
+                showWelcome.value = false;
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            };
+
+            const dailyPay = computed(() => {
+                const annualPackage = (form.salary * form.months) + form.allowance;
+                return annualPackage / 261;
+            });
+
+            const actualWorkHours = computed(() => {
+                const start = new Date(`2000-01-01T${form.startTime}`);
+                const end = new Date(`2000-01-01T${form.endTime}`);
+                let diff = (end - start) / 1000 / 60 / 60; 
+                if (diff < 0) diff += 24; 
+                let netWork = diff - form.lunchHour;
+                if (form.isLateOT) netWork = netWork * 1.1;
+                return Math.max(0.1, netWork);
+            });
+
+            const commuteHours = computed(() => {
+                let hours = (form.commuteSingle * 2) / 60;
+                if (form.isCrossHarborPain) hours += 0.5;
+                return hours;
+            });
+
+            const slackHours = computed(() => form.slackMinutes / 60);
+
+            const finalScore = computed(() => {
+                const numerator = dailyPay.value * Number(form.industry) * Number(form.migration) * Number(form.wfh) * Number(form.vibeScore);
+                const timeCost = actualWorkHours.value + commuteHours.value - (0.5 * slackHours.value);
+                const safeTimeCost = Math.max(1, timeCost); 
+                const denominator = form.age * safeTimeCost * Number(form.rentFactor) * Number(form.eduFactor);
+
+                if (denominator === 0) return 0;
+                return (numerator / denominator).toFixed(2);
+            });
+
+            const ratingInfo = computed(() => {
+                const r = parseFloat(finalScore.value);
+                if (r < 3.3) {
+                    return {
+                        title: "地狱生存线 💀",
+                        textColor: "text-black",
+                        quote: "我在人间凑数的一天...",
+                        portrait: "📊 画像：房租压力大，无WFH，通勤远，或行业处于鄙视链底端。标准的负资产打工。",
+                        advice: "⚠️ 建议：除非为了换取Tier 0级的跳板履历，否则请立刻跑路。"
+                    };
+                } else if (r < 6.0) {
+                    return {
+                        title: "标准港畜线 😐",
+                        textColor: "text-gray-600",
+                        quote: "手停口停，无惊无险。",
+                        portrait: "📊 画像：香港60%打工人的真实状态。月薪尚可，但存不下大钱，不敢裸辞。",
+                        advice: "🔄 建议：必须寻找杠杆，通过跳槽涨薪（提升分子）或搬家/回深圳住（降低分母）来突破。"
+                    };
+                } else if (r < 10.5) {
+                    return {
+                        title: "舒适中产线 ☕",
+                        textColor: "text-blue-600",
+                        quote: "生活有得拣，假期有得飞。",
+                        portrait: "📊 画像：高日薪 + 低房租痛感 + 适度WFH 的完美组合。",
+                        advice: "✅ 建议：恭喜！你已经找到了香港职场的甜蜜点（Sweet Spot）。这是一个值得长期发展的位置，好好享受生活。"
+                    };
+                } else {
+                    return {
+                        title: "神仙工 🦄",
+                        textColor: "text-purple-600",
+                        quote: "你是系统的漏洞，也是奇迹。",
+                        portrait: "📊 画像：拿着Global Pay在香港Remote，或者享有顶级Housing Allowance。",
+                        advice: "🤫 建议：请焊死在这份工作上！不要让别人知道你有这份工作，闷声发大财。"
+                    };
+                }
+            });
+
+            const ratingTitle = computed(() => ratingInfo.value.title);
+            const textColor = computed(() => ratingInfo.value.textColor);
+            const ratingQuote = computed(() => ratingInfo.value.quote);
+            const ratingPortrait = computed(() => ratingInfo.value.portrait);
+            const ratingAdvice = computed(() => ratingInfo.value.advice);
+
+            const qrImageUrl = computed(() => {
+                return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(siteUrl)}`;
+            });
+
+            const generateImage = () => {
+                const element = document.getElementById('result-card');
+                html2canvas(element, { 
+                    scale: 3, 
+                    backgroundColor: null,
+                    useCORS: true 
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = `HK_Work_Score_${finalScore.value}.png`;
+                    link.href = canvas.toDataURL();
+                    link.click();
+                });
+            };
+
+            return {
+                showWelcome,
+                startTest,
+                form,
+                dailyPay,
+                actualWorkHours,
+                commuteHours,
+                finalScore,
+                ratingTitle,
+                textColor, 
+                ratingQuote,
+                ratingPortrait, 
+                ratingAdvice,
+                qrImageUrl, 
+                generateImage
+            };
+        }
+    }).mount('#app');
+</script>
+
+</body>
+</html>
