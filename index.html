@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>香港打工体验报告 HK-R v6.1</title>
+    <title>香港打工体验报告 HK-R v7.0</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+HK:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* iOS 系统字体优先，配合暖色背景 */
         body { 
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, "PingFang HK", "Heiti TC", sans-serif; 
-            background-color: #fdf8f6; /* 暖白底色 */
-            color: #44403c; /* Stone-700 暖深灰 */
+            background-color: #fdf8f6; 
+            color: #44403c; 
         }
 
-        /* 🌟 iOS 风弥散背景 */
+        /* iOS Mesh Gradient Background */
         .ios-mesh-bg {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
@@ -30,25 +30,23 @@
             opacity: 0.6;
             animation: float 10s infinite ease-in-out;
         }
-        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #ffedd5; } /* 橙色光晕 */
-        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: #fce7f3; animation-delay: 2s; } /* 粉色光晕 */
-        .blob-3 { top: 40%; left: 30%; width: 300px; height: 300px; background: #fff1f2; animation-delay: 4s; } /* 玫瑰淡光 */
+        .blob-1 { top: -10%; left: -10%; width: 500px; height: 500px; background: #ffedd5; } 
+        .blob-2 { bottom: -10%; right: -10%; width: 400px; height: 400px; background: #fce7f3; animation-delay: 2s; } 
+        .blob-3 { top: 40%; left: 30%; width: 300px; height: 300px; background: #fff1f2; animation-delay: 4s; } 
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0); }
             50% { transform: translate(20px, -20px); }
         }
 
-        /* 🌟 毛玻璃卡片效果 */
         .glass-card {
             background: rgba(255, 255, 255, 0.75);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 10px 40px -10px rgba(255, 166, 122, 0.15); /* 暖橙色投影 */
+            box-shadow: 0 10px 40px -10px rgba(255, 166, 122, 0.15); 
         }
 
-        /* 截图专用颜色：深砖红色 */
         .score-text { color: #c2410c; } 
 
         .fade-enter-active, .fade-leave-active { transition: opacity 0.4s ease; }
@@ -76,13 +74,13 @@
                 香港打工<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">体验</span>报告
             </h1>
-            <p class="text-stone-400 text-xs mb-8 tracking-[0.2em] uppercase font-medium">HK Work Experience Report (v6.1)</p>
+            <p class="text-stone-400 text-xs mb-8 tracking-[0.2em] uppercase font-medium">HK Work Experience Report (v7.0)</p>
 
             <div class="glass-card p-6 rounded-3xl w-full mb-8">
                 
                 <h3 class="font-bold text-stone-700 mb-4 text-sm flex items-center">
                     <span class="bg-orange-100 text-orange-600 py-0.5 px-2 rounded-full text-xs mr-2 font-bold">Core</span>
-                    终极性价比公式
+                    终极性价比公式 v7.0
                 </h3>
                 
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/60 overflow-x-auto no-scrollbar mb-6">
@@ -90,10 +88,10 @@
                         <span class="font-bold text-2xl mr-3 italic font-serif text-orange-600">R =</span>
                         <div class="flex flex-col items-center text-[10px] md:text-xs leading-relaxed font-medium">
                             <div class="border-b-2 border-stone-300 px-2 pb-1 mb-1 text-orange-700 whitespace-nowrap">
-                                综合日薪 × 行业系数 × 润学属性 × WFH加成 × 环境爽度
+                                真实日薪（含雇主MPF) × 福利系数 × 行业 × 润学 × WFH加成 × 环境爽度
                             </div>
                             <div class="text-stone-500 whitespace-nowrap">
-                                年龄 × [ 名义工时 + 通勤 - (0.5×摸鱼) ] × 房租痛感 × 学历溢价
+                                年龄 × [ 名义工时 + 通勤痛苦 - 0.5×蛇王时间 ] × 房租痛感 × 学历溢价
                             </div>
                         </div>
                     </div>
@@ -105,37 +103,40 @@
                 </h3>
                 
                 <div class="grid grid-cols-2 gap-3">
-                    <div class="bg-slate-200/50 p-3 rounded-2xl border border-white/50">
+                    <div class="bg-slate-200/50 p-3 rounded-2xl border border-slate-300/50">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-lg">💀</span>
-                            <span class="text-[10px] font-bold bg-stone-800 text-white px-1.5 py-0.5 rounded-full">R &lt; 3.3</span>
+                            <span class="text-[10px] font-bold bg-stone-800 text-white px-1.5 py-0.5 rounded-full">R &lt; 3.5</span>
                         </div>
                         <div class="text-xs font-bold text-stone-700">地狱生存线</div>
-                        <div class="text-[9px] text-stone-400 mt-0.5">负资产打工，建议快逃</div>
+                        <div class="text-[9px] text-stone-500 mt-0.5">负资产打工，建议快逃</div>
                     </div>
-                    <div class="bg-amber-50/70 p-3 rounded-2xl border border-white/50">
+                    
+                    <div class="bg-amber-50/80 p-3 rounded-2xl border border-amber-100/50">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-lg">😐</span>
-                            <span class="text-[10px] font-bold bg-yellow-400 text-white px-1.5 py-0.5 rounded-full">3.3-6.0</span>
+                            <span class="text-[10px] font-bold bg-orange-400 text-white px-1.5 py-0.5 rounded-full">3.5-6.5</span>
                         </div>
                         <div class="text-xs font-bold text-stone-600">标准港畜线</div>
-                        <div class="text-[9px] text-stone-400 mt-0.5">手停口停，无惊无险</div>
+                        <div class="text-[9px] text-stone-500 mt-0.5">手停口停，无惊无险</div>
                     </div>
+                    
                     <div class="bg-orange-50/80 p-3 rounded-2xl border border-orange-100/50">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-lg">☕</span>
-                            <span class="text-[10px] font-bold bg-orange-500 text-white px-1.5 py-0.5 rounded-full">6.0-10.5</span>
+                            <span class="text-[10px] font-bold bg-orange-500 text-white px-1.5 py-0.5 rounded-full">6.5-12.0</span>
                         </div>
                         <div class="text-xs font-bold text-orange-700">舒适中产线</div>
                         <div class="text-[9px] text-orange-400 mt-0.5">生活有得拣，假期有得飞</div>
                     </div>
+                    
                     <div class="bg-rose-50/80 p-3 rounded-2xl border border-rose-100/50">
                         <div class="flex justify-between items-center mb-1">
                             <span class="text-lg">🦄</span>
-                            <span class="text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">&gt; 10.5</span>
+                            <span class="text-[10px] font-bold bg-rose-500 text-white px-1.5 py-0.5 rounded-full">&gt; 12.0</span>
                         </div>
                         <div class="text-xs font-bold text-rose-700">神仙笋工</div>
-                        <div class="text-[9px] text-rose-400 mt-0.5">系统漏洞，绝对机密</div>
+                        <div class="text-[9px] text-rose-400 mt-0.5">系统漏洞，建议焊死在工位上</div>
                     </div>
                 </div>
             </div>
@@ -147,7 +148,7 @@
                 <span class="ml-2">👉</span>
             </button>
             
-            <p class="mt-8 text-[10px] text-stone-300 font-medium">Powered by HK-R Algorithm</p>
+            <p class="mt-8 text-[10px] text-stone-300 font-medium">Powered by HK-R Algorithm v7.0</p>
         </div>
 
         <div v-else key="calculator">
@@ -167,27 +168,66 @@
                 
                 <div class="border-b border-stone-100 pb-4">
                     <h2 class="text-lg font-bold text-orange-600 mb-4 flex items-center">
-                        💰 分子：收益与加成
+                        💰 分子：收益与福利
                     </h2>
                     <div class="grid grid-cols-2 gap-4 mb-3">
                         <div>
-                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">月薪 (HKD)</label>
-                            <input v-model.number="form.salary" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition" placeholder="20000">
+                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">合同月薪 (HKD)</label>
+                            <input v-model.number="form.salary" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition" placeholder="20000">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">年薪月数</label>
-                            <input v-model.number="form.months" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition" placeholder="12">
+                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">薪水月数</label>
+                            <input v-model.number="form.months" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition" placeholder="12">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label class="block text-xs font-bold text-stone-500 uppercase mb-1">年度固定津贴 (Bonus/Allowance)</label>
-                        <input v-model.number="form.allowance" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition" placeholder="0">
+                        <label class="block text-xs font-bold text-stone-500 uppercase mb-1">年度固定津贴 (Cash Allowance)</label>
+                        <input v-model.number="form.allowance" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition" placeholder="0">
                     </div>
+                    
+                    <div class="mb-3">
+                        <label class="block text-xs font-bold text-stone-500 uppercase mb-1">雇主 MPF 供款模式</label>
+                        <select v-model="form.mpfType" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                            <option value="mandatory">法定标准: 5% (不足$1500)</option>
+                            <option value="voluntary_5">法定标准: 5% （足额供款$1500）</option>
+                            <option value="voluntary_10">优良: 10% （雇主自愿供款，无上限）</option>
+                            <option value="voluntary_15">顶级: 15% （雇主自愿供款，无上限）</option>
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="block text-xs font-bold text-stone-500 uppercase mb-1">年假天数 (Annual Leave)</label>
+                        <select v-model="form.alDays" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                            <option value="0.95">抠门:10天及以下 (0.95)</option>
+                            <option value="1.0">标准: 11-14天 (1.0)</option>
+                            <option value="1.05">优良: 15-19天 (1.05)</option>
+                            <option value="1.1">爽: 20天及以上 (1.1)</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4 mb-3">
+                        <div>
+                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">医疗保险</label>
+                            <select v-model="form.medical" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                                <option value="0.0">无 / 仅门诊（0.0）</option>
+                                <option value="0.05">含住院 (中产底线)（+0.05）</option>
+                                <option value="0.1">全家保/牙科 (顶级)（+0.1）</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-stone-500 uppercase mb-1">考证/进修福利</label>
+                            <select v-model="form.edu" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                                <option value="0.0">无 (自费)（0.0）</option>
+                                <option value="0.05">全包/Study Leave（+0.05）</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">行业 (Industry Caste)</label>
-                        <select v-model="form.industry" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition appearance-none">
+                        <select v-model="form.industry" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
                             <option value="1.3">Tier 0: 医生/AO/EO/公营机构 (1.3)-铁饭碗，抗衰退，社会地位高</option>
-                            <option value="1.2">Tier 1: 投行/Hedge Fund/顶级律所 (1.2)-钱给得实在太多，哪怕累也值得</option>
+                            <option value="1.2">Tier 1: 投行/资管/顶级律所 (1.2)-钱给得实在太多，哪怕累也值得</option>
                             <option value="1.1">Tier 2: IT/MNC/银行中后台 (1.1)-体面，薪水尚可</option>
                             <option value="1.0">Tier 3: 普通文职/教育/传媒 (1.0)-基准线</option>
                             <option value="0.9">Tier 4: 餐饮/零售/劳动密集 (0.9)-手停口停，性价比低</option>
@@ -195,16 +235,16 @@
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">润学/跳板属性</label>
-                        <select v-model="form.migration" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                        <select v-model="form.migration" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
                             <option value="1.2">金跳板: 包Global Transfer (1.2)</option>
-                            <option value="1.1">镀金: 知名企业，履历认可高 (1.1)</option>
+                            <option value="1.1">镀金: 知名外企，履历认可高 (1.1)</option>
                             <option value="1.0">本地: 纯港资/中资中小企 (1.0)</option>
                             <option value="0.9">锁死: 有Bond或行业敏感 (0.9)</option>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">WFH 自由度</label>
-                        <select v-model="form.wfh" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                        <select v-model="form.wfh" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
                             <option value="1.3">天堂: Fully Remote / 数字游民 (1.3)</option>
                             <option value="1.2">爽: 每周 3-4 天 (1.2)</option>
                             <option value="1.1">恩赐: 每周 1-2 天 (1.1)</option>
@@ -213,7 +253,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">环境与开心指数 (Vibe Check)</label>
-                        <select v-model="form.vibeScore" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-orange-200 outline-none transition">
+                        <select v-model="form.vibeScore" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
                             <option value="1.2">1.2 (极爽): 中环/ICC + 外企氛围</option>
                             <option value="1.1">1.1 (舒适): 地段好 或 T8不用办公</option>
                             <option value="1.0">1.0 (标准): 普通写字楼 / 无功无过</option>
@@ -229,21 +269,21 @@
                     </h2>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">年龄 (Age)</label>
-                        <input v-model.number="form.age" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                        <input v-model.number="form.age" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                     </div>
-                    <div class="grid grid-cols-2 gap-4 mb-3">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
                         <div>
                             <label class="block text-xs font-bold text-stone-500 uppercase mb-1">上班时间</label>
-                            <input v-model="form.startTime" type="time" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                            <input v-model="form.startTime" type="time" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                         </div>
                         <div>
                             <label class="block text-xs font-bold text-stone-500 uppercase mb-1">下班时间</label>
-                            <input v-model="form.endTime" type="time" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                            <input v-model="form.endTime" type="time" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">午休时长 (小时)</label>
-                        <input v-model.number="form.lunchHour" type="number" step="0.5" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                        <input v-model.number="form.lunchHour" type="number" step="0.5" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                     </div>
                     <div class="mb-3">
                         <label class="inline-flex items-center text-xs font-bold text-rose-500">
@@ -252,7 +292,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">单程门对门时间 (分钟)</label>
-                        <input v-model.number="form.commuteSingle" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                        <input v-model.number="form.commuteSingle" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                     </div>
                     <div class="mb-3">
                         <label class="inline-flex items-center text-xs font-bold text-rose-500">
@@ -260,12 +300,12 @@
                         </label>
                     </div>
                     <div class="mb-3">
-                        <label class="block text-xs font-bold text-stone-500 uppercase mb-1">每日摸鱼总时长 (分钟)</label>
-                        <input v-model.number="form.slackMinutes" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                        <label class="block text-xs font-bold text-stone-500 uppercase mb-1">每日摸鱼总时长（蛇王时间） (分钟)</label>
+                        <input v-model.number="form.slackMinutes" type="number" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">房租痛感系数</label>
-                        <select v-model="form.rentFactor" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                        <select v-model="form.rentFactor" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                             <option value="1.0">1.0 (无痛): 住家/包住/自置</option>
                             <option value="1.1">1.1 (舒适): 房租 < 20%</option>
                             <option value="1.3">1.3 (紧凑): 房租 20%-35%</option>
@@ -274,7 +314,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">学历溢价 (Education Tax)</label>
-                        <select v-model="form.eduFactor" class="w-full bg-white/50 border border-stone-200 rounded-xl p-2.5 focus:ring-2 focus:ring-rose-200 outline-none transition">
+                        <select v-model="form.eduFactor" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
                             <option value="0.9">0.9: 副学士/HD</option>
                             <option value="1.0">1.0: 普通本科/非名校海归</option>
                             <option value="1.1">1.1: 港三/硕士</option>
@@ -319,8 +359,12 @@
 
                         <div class="bg-white rounded-xl border border-stone-100 p-3 text-xs shadow-sm">
                             <div class="flex justify-between border-b border-stone-100 pb-1 mb-1">
-                                <span class="text-stone-400">综合日薪</span>
+                                <span class="text-stone-400">综合日薪 (含MPF)</span>
                                 <span class="font-bold text-stone-700">HK$ {{ dailyPay.toFixed(0) }}</span>
+                            </div>
+                            <div class="flex justify-between border-b border-stone-100 pb-1 mb-1">
+                                <span class="text-stone-400">福利系数 (年假/医/教)</span>
+                                <span class="font-bold text-stone-700">x {{ welfareIndex.toFixed(2) }}</span>
                             </div>
                             <div class="flex justify-between border-b border-stone-100 pb-1 mb-1">
                                 <span class="text-stone-400">实际工时</span>
@@ -347,7 +391,7 @@
 
                         <div class="flex items-end justify-between mt-3 pt-2 border-t border-stone-200">
                             <div class="text-left pb-1">
-                                <div class="text-[10px] text-stone-400 font-bold">HK-R v6.1 Algorithm</div>
+                                <div class="text-[10px] text-stone-400 font-bold">HK-R v7.0 Algorithm</div>
                                 <div class="text-[9px] text-stone-300">扫码测测你的工作性价比</div>
                             </div>
                             <div class="bg-white p-1 rounded shadow-sm border border-stone-100">
@@ -378,6 +422,10 @@
                 salary: 20000,
                 months: 12,
                 allowance: 0,
+                mpfType: "mandatory", // 新增：MPF类型
+                alDays: "1.0",        // 新增：年假系数
+                medical: "0.0",       // 新增：医疗系数
+                edu: "0.0",           // 新增：教育系数
                 industry: "1.0",
                 migration: "1.0",
                 wfh: "1.0",
@@ -399,9 +447,37 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             };
 
+            // 🌟 1. 计算真实日薪 (包含雇主 MPF)
             const dailyPay = computed(() => {
-                const annualPackage = (form.salary * form.months) + form.allowance;
-                return annualPackage / 261;
+                const baseAnnual = (form.salary * form.months) + form.allowance;
+                
+                // 计算雇主每年的 MPF 供款
+                let annualEmployerMPF = 0;
+                if (form.mpfType === 'mandatory') {
+                    // 法定：5% 但上限$1500
+                    const monthlyContribution = Math.min(form.salary * 0.05, 1500);
+                    annualEmployerMPF = monthlyContribution * 12;
+                } else if (form.mpfType === 'voluntary_5') {
+                    annualEmployerMPF = form.salary * 0.05 * 12;
+                } else if (form.mpfType === 'voluntary_10') {
+                    annualEmployerMPF = form.salary * 0.10 * 12;
+                } else if (form.mpfType === 'voluntary_15') {
+                    annualEmployerMPF = form.salary * 0.15 * 12;
+                }
+
+                return (baseAnnual + annualEmployerMPF) / 261;
+            });
+
+            // 🌟 2. 计算福利保障系数 (Welfare Index)
+            const welfareIndex = computed(() => {
+                const alScore = parseFloat(form.alDays);
+                const mediScore = parseFloat(form.medical);
+                const eduScore = parseFloat(form.edu);
+                // 基础是年假系数，加上医疗和教育的加分
+                // 逻辑：基础1.0 + (年假偏差) + 医疗 + 教育
+                // 这里我们直接累加：例如 AL(1.0) + Medical(0.05) + Edu(0.05) = 1.1
+                // 但因为AL本身已经是系数，我们以AL为基准，往上加
+                return alScore + mediScore + eduScore;
             });
 
             const actualWorkHours = computed(() => {
@@ -411,7 +487,7 @@
                 if (diff < 0) diff += 24; 
                 
                 let netWork = diff - form.lunchHour;
-                netWork = netWork - (form.slackMinutes / 60);
+                netWork = netWork - (form.slackMinutes / 120);
 
                 if (form.isLateOT) {
                     netWork = netWork * 1.1;
@@ -425,12 +501,13 @@
                 return hours;
             });
 
-            const slackHours = computed(() => form.slackMinutes / 60);
+            const slackHours = computed(() => form.slackMinutes / 120);
 
+            // 🌟 3. 最终 R 值计算 (加入 Welfare Index)
             const finalScore = computed(() => {
-                const numerator = dailyPay.value * Number(form.industry) * Number(form.migration) * Number(form.wfh) * Number(form.vibeScore);
+                const numerator = dailyPay.value * Number(form.industry) * Number(form.migration) * Number(form.wfh) * Number(form.vibeScore) * welfareIndex.value;
                 
-                const timeCost = actualWorkHours.value + commuteHours.value + (0.5 * slackHours.value);
+                const timeCost = actualWorkHours.value + commuteHours.value + (slackHours.value);
                 
                 const safeTimeCost = Math.max(1, timeCost); 
                 const denominator = form.age * safeTimeCost * Number(form.rentFactor) * Number(form.eduFactor);
@@ -441,7 +518,7 @@
 
             const ratingInfo = computed(() => {
                 const r = parseFloat(finalScore.value);
-                if (r < 3.3) {
+                if (r < 3.5) {
                     return {
                         title: "地狱生存线 💀",
                         textColor: "text-stone-800",
@@ -449,7 +526,7 @@
                         portrait: "📊 画像：房租压力大，无WFH，通勤远，或行业处于鄙视链底端。标准的负资产打工。",
                         advice: "⚠️ 建议：除非为了换取Tier 0级的跳板履历，否则请立刻跑路。"
                     };
-                } else if (r < 6.0) {
+                } else if (r < 6.5) {
                     return {
                         title: "标准港畜线 😐",
                         textColor: "text-stone-500",
@@ -457,7 +534,7 @@
                         portrait: "📊 画像：香港60%打工人的真实状态。月薪尚可，但存不下大钱，不敢裸辞。",
                         advice: "🔄 建议：必须寻找杠杆，通过跳槽涨薪（提升分子）或搬家/回深圳住（降低分母）来突破。"
                     };
-                } else if (r < 10.5) {
+                } else if (r < 12) {
                     return {
                         title: "舒适中产线 ☕",
                         textColor: "text-orange-600",
@@ -505,6 +582,7 @@
                 startTest,
                 form,
                 dailyPay,
+                welfareIndex,
                 actualWorkHours,
                 commuteHours,
                 finalScore,
