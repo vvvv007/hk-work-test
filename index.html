@@ -306,10 +306,11 @@
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">房租痛感系数</label>
                         <select v-model="form.rentFactor" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-rose-200 outline-none transition">
-                            <option value="1.0">1.0 (无痛): 住家/包住/自置</option>
-                            <option value="1.1">1.1 (舒适): 房租 < 20%</option>
-                            <option value="1.3">1.3 (紧凑): 房租 20%-35%</option>
-                            <option value="1.6">1.6 (窒息): 房租 > 35%</option>
+                            <option value="1.0">1.0 (无痛): 住家里 / 公司包住 / 自置</option>
+                            <option value="1.1">1.1 (健康): 房租 < 20%</option>
+                            <option value="1.2">1.2 (常态): 房租 20% - 35%</option>
+                            <option value="1.3">1.3 (压力): 房租 35% - 50%</option>
+                            <option value="1.4">1.4 (高危): 房租 > 50%</option>
                         </select>
                     </div>
                     <div class="mb-3">
@@ -422,7 +423,7 @@
                 salary: 20000,
                 months: 12,
                 allowance: 0,
-                mpfType: "mandatory", // 新增：MPF类型
+                mpfType: "voluntary_5", // 新增：MPF类型
                 alDays: "1.0",        // 新增：年假系数
                 medical: "0.0",       // 新增：医疗系数
                 edu: "0.0",           // 新增：教育系数
@@ -438,7 +439,7 @@
                 commuteSingle: 45, 
                 isCrossHarborPain: false,
                 slackMinutes: 30,
-                rentFactor: "1.3",
+                rentFactor: "1.2",
                 eduFactor: "1.0"
             });
 
