@@ -502,13 +502,13 @@
                 return hours;
             });
 
-            const slackHours = computed(() => form.slackMinutes / 120);
+            const slackHours = computed(() => form.slackMinutes / 60);
 
             // 🌟 3. 最终 R 值计算 (加入 Welfare Index)
             const finalScore = computed(() => {
                 const numerator = dailyPay.value * Number(form.industry) * Number(form.migration) * Number(form.wfh) * Number(form.vibeScore) * welfareIndex.value;
                 
-                const timeCost = actualWorkHours.value + commuteHours.value + (slackHours.value);
+                const timeCost = actualWorkHours.value + commuteHours.value + (0.5 * slackHours.value)
                 
                 const safeTimeCost = Math.max(1, timeCost); 
                 const denominator = form.age * safeTimeCost * Number(form.rentFactor) * Number(form.eduFactor);
