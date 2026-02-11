@@ -488,7 +488,7 @@
                 if (diff < 0) diff += 24; 
                 
                 let netWork = diff - form.lunchHour;
-                netWork = netWork - (form.slackMinutes / 120);
+                netWork = netWork - (form.slackMinutes / 60);
 
                 if (form.isLateOT) {
                     netWork = netWork * 1.1;
