@@ -488,7 +488,7 @@
                 if (diff < 0) diff += 24; 
                 
                 let netWork = diff - form.lunchHour;
-                netWork = netWork - (form.slackMinutes / 60);
+                netWork = netWork - (form.slackMinutes / 120);
 
                 if (form.isLateOT) {
                     netWork = netWork * 1.1;
@@ -508,7 +508,7 @@
             const finalScore = computed(() => {
                 const numerator = dailyPay.value * Number(form.industry) * Number(form.migration) * Number(form.wfh) * Number(form.vibeScore) * welfareIndex.value;
                 
-                const timeCost = actualWorkHours.value + commuteHours.value + (0.5 * slackHours.value)
+                const timeCost = actualWorkHours.value + commuteHours.value
                 
                 const safeTimeCost = Math.max(1, timeCost); 
                 const denominator = form.age * safeTimeCost * Number(form.rentFactor) * Number(form.eduFactor);
