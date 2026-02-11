@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>香港打工体验报告 HK-R v7.1</title>
+    <title>香港打工体验报告 HK-R v7.2</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -74,13 +74,13 @@
                 香港打工<br>
                 <span class="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-rose-500">体验</span>报告
             </h1>
-            <p class="text-stone-400 text-xs mb-8 tracking-[0.2em] uppercase font-medium">HK Work Experience Report (v7.1)</p>
+            <p class="text-stone-400 text-xs mb-8 tracking-[0.2em] uppercase font-medium">HK Work Experience Report (v7.2)</p>
 
             <div class="glass-card p-6 rounded-3xl w-full mb-8">
                 
                 <h3 class="font-bold text-stone-700 mb-4 text-sm flex items-center">
                     <span class="bg-orange-100 text-orange-600 py-0.5 px-2 rounded-full text-xs mr-2 font-bold">Core</span>
-                    终极性价比公式 v7.1
+                    终极性价比公式 v7.2
                 </h3>
                 
                 <div class="bg-white/50 p-4 rounded-2xl border border-white/60 overflow-x-auto no-scrollbar mb-6">
@@ -188,8 +188,8 @@
                     <div class="mb-3">
                         <label class="block text-xs font-bold text-stone-500 uppercase mb-1">雇主 MPF 供款模式</label>
                         <select v-model="form.mpfType" class="w-full bg-white/50 border border-stone-200 rounded-xl h-11 px-3 focus:ring-2 focus:ring-orange-200 outline-none transition">
-                            <option value="mandatory">法定标准: 5% (不足$1500)</option>
-                            <option value="voluntary_5">法定标准: 5% （足额供款$1500）</option>
+                            <option value="mandatory">法定标准: 5% (根据薪资水平，最多$1500)</option>
+                            <option value="voluntary_5">法定标准: 5% （雇主自愿供款，无上限）</option>
                             <option value="voluntary_10">优良: 10% （雇主自愿供款，无上限）</option>
                             <option value="voluntary_15">顶级: 15% （雇主自愿供款，无上限）</option>
                         </select>
@@ -392,7 +392,7 @@
 
                         <div class="flex items-end justify-between mt-3 pt-2 border-t border-stone-200">
                             <div class="text-left pb-1">
-                                <div class="text-[10px] text-stone-400 font-bold">HK-R v7.1 Algorithm</div>
+                                <div class="text-[10px] text-stone-400 font-bold">HK-R v7.2 Algorithm</div>
                                 <div class="text-[9px] text-stone-300">扫码测测你的工作性价比</div>
                             </div>
                             <div class="bg-white p-1 rounded shadow-sm border border-stone-100">
@@ -423,7 +423,7 @@
                 salary: 20000,
                 months: 12,
                 allowance: 0,
-                mpfType: "voluntary_5", // 新增：MPF类型
+                mpfType: "mandatory", // 新增：MPF类型
                 alDays: "1.0",        // 新增：年假系数
                 medical: "0.0",       // 新增：医疗系数
                 edu: "0.0",           // 新增：教育系数
